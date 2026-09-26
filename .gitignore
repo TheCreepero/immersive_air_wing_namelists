@@ -1,0 +1,14 @@
+# Archives and build artifacts
+*.zip
+*.7z
+*.tar.gz
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.bak
+.steam_username
