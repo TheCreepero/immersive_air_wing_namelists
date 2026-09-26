@@ -89,3 +89,27 @@ Always validate changes before completing tasks:
     ```powershell
     git -C immersive_air_wing_namelists status
     ```
+
+## 7. Branding & Thumbnail Standards
+- **Namelist Mod Suite Visual Taxonomy**:
+  - **Ground / Divisions** (*Immersive Namelists Expanded*): `--theme amber` (`#E5A93C`)
+  - **Naval / Ships** (*Immersive Ship Names Expanded*): `--theme cyan` (`#63B3ED`)
+  - **Aviation / Air Wings** (*Immersive Air Wing Namelists*): `--theme paradox_red` (`#DE5646`), accenting `AIR WING`
+- **Asset Directory Invariants**:
+  - `assets/thumbnail_raw.png`: Original, uncompressed high-resolution artwork (1920×1440).
+  - `assets/thumbnail_master.png`: Cropped 512×512 branded master.
+  - `immersive_air_wing_namelists/thumbnail.png`: Active in-game/Steam Workshop distribution asset (< 1 MB).
+- **Canonical Generation Command**:
+  ```powershell
+  python "W:\Antigravity\Mod Thumbnail Generator\generate_branding.py" `
+    --descriptor "immersive_air_wing_namelists\descriptor.mod" `
+    --title "IMMERSIVE`nAIR WING`nNAMELISTS" `
+    --bg-image "assets\thumbnail_raw.png" `
+    --theme paradox_red `
+    --accent-match "AIR WING" `
+    --text-pos top `
+    --hoi4 `
+    --out-dirs "immersive_air_wing_namelists,assets" `
+    --preview-filename "thumbnail.png"
+  ```
+
