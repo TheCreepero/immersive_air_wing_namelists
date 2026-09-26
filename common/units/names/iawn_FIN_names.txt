@@ -1,0 +1,223 @@
+FIN = {
+	air_wing_names_template = AIR_WING_NAME_FIN_FALLBACK
+
+	# Air wings can only be named through archetype
+
+	# -------------------------------------------------------------
+	# Light Airframes (Small)
+	# -------------------------------------------------------------
+
+	# Land Fighters & Interceptors
+	small_plane_airframe = {
+		prefix = ""
+		generic = { "Hävittäjälentolaivue" }
+		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		unique = {
+			"Hävittäjälentolaivue 24" "Hävittäjälentolaivue 26" "Hävittäjälentolaivue 28"
+			"Hävittäjälentolaivue 30" "Hävittäjälentolaivue 32" "Hävittäjälentolaivue 34"
+			"Hävittäjälentolaivue 11" "Hävittäjälentolaivue 13" "Hävittäjälentolaivue 21"
+			"Hävittäjälentolaivue 23" "Hävittäjälentolaivue 31" "Hävittäjälentolaivue 33"
+			"Täydennyslentolaivue 25" "Täydennyslentolaivue 35" "Hävittäjäkoulutuslaivue"
+		}
+	}
+
+	# Close Air Support (CAS)
+	small_plane_cas_airframe = {
+		prefix = ""
+		generic = { "Rynnäkkölentolaivue" "Maataistelulentolaivue" }
+		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		unique = {
+			"Rynnäkkölentolaivue 1" "Rynnäkkölentolaivue 2" "Rynnäkkölentolaivue 3" "Rynnäkkölentolaivue 4"
+			"Syöksypommituslaivue 1" "Syöksypommituslaivue 2"
+			"Maataistelulentolaivue 10" "Maataistelulentolaivue 20"
+		}
+	}
+
+	# Naval Bombers (NAV)
+	small_plane_naval_bomber_airframe = {
+		prefix = ""
+		generic = { "Merilentolaivue" "Torpedolentolaivue" }
+		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		unique = {
+			"Lentolaivue 6" "Meritoimintalaivue 6" "Erillinen Merilentolaivue" "5. Erillinen Lentolaivue"
+			"Rannikkotorpedolaivue 1" "Rannikkotorpedolaivue 2" "Laatokan Lentoryhmä"
+			"Merilentolaivue 1" "Merilentolaivue 2" "Merilentolaivue 3"
+		}
+	}
+
+	# Suicide Craft / Kamikaze
+	small_plane_suicide_airframe = {
+		prefix = ""
+		generic = { "Erikoishyökkäyslaivue" }
+		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		unique = {
+			"Erillinen Uhrihyökkäysosasto" "Erikoishyökkäyslaivue 1" "Erikoishyökkäyslaivue 2"
+		}
+	}
+
+	# Carrier Fighters
+	cv_small_plane_airframe = {
+		prefix = ""
+		generic = { "Tukialushävittäjälaivue" }
+		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		unique = {
+			"Tukialushävittäjälaivue 1" "Tukialushävittäjälaivue 2" "Tukialushävittäjälaivue 3" "Tukialushävittäjälaivue 4"
+		}
+	}
+
+	# Carrier CAS
+	cv_small_plane_cas_airframe = {
+		prefix = ""
+		generic = { "Tukialusrynnäkkölaivue" }
+		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		unique = {
+			"Tukialusrynnäkkölaivue 1" "Tukialusrynnäkkölaivue 2" "Tukialusrynnäkkölaivue 3"
+		}
+	}
+
+	# Carrier NAV
+	cv_small_plane_naval_bomber_airframe = {
+		prefix = ""
+		generic = { "Tukialustorpedolaivue" }
+		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		unique = {
+			"Tukialustorpedolaivue 1" "Tukialustorpedolaivue 2" "Tukialustorpedolaivue 3"
+		}
+	}
+
+	# Carrier Suicide Craft
+	cv_small_plane_suicide_airframe = {
+		prefix = ""
+		generic = { "Tukialuserikoishyökkäyslaivue" }
+		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		unique = {
+			"Tukialuserikoishyökkäysosasto 1" "Tukialuserikoishyökkäysosasto 2"
+		}
+	}
+
+	# -------------------------------------------------------------
+	# Medium Airframes
+	# -------------------------------------------------------------
+
+	# Heavy Fighters / Twin-Engine Interceptors
+	medium_plane_fighter_airframe = {
+		prefix = ""
+		generic = { "Raskas Hävittäjälentolaivue" "Yöhävittäjälaivue" }
+		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		unique = {
+			"Raskas Hävittäjälaivue 1" "Raskas Hävittäjälaivue 2"
+			"Yöhävittäjälaivue 1" "Yöhävittäjälaivue 2"
+			"Hävittäjälentolaivue 36" "Hävittäjälentolaivue 38"
+		}
+	}
+
+	# Tactical Bombers
+	medium_plane_airframe = {
+		prefix = ""
+		generic = { "Pommituslentolaivue" }
+		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		unique = {
+			"Pommituslentolaivue 42" "Pommituslentolaivue 44" "Pommituslentolaivue 46" "Pommituslentolaivue 48"
+			"Pommituslentolaivue 40" "Pommituslentolaivue 41" "Pommituslentolaivue 43" "Pommituslentolaivue 45"
+			"Pommituslentolaivue 47" "Pommituslentolaivue 50" "Kevyt Pommituslaivue 1" "Kevyt Pommituslaivue 2"
+		}
+	}
+
+	# Reconnaissance / Scout Planes
+	medium_plane_scout_plane_airframe = {
+		prefix = ""
+		generic = { "Tiedustelulentolaivue" "Kaukotiedustelulaivue" }
+		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		unique = {
+			"Tiedustelulentolaivue 10" "Tiedustelulentolaivue 12" "Tiedustelulentolaivue 14"
+			"Tiedustelulentolaivue 16" "Tiedustelulentolaivue 17" "Tiedustelulentolaivue 29"
+			"Kaukotiedustelulentue 1" "Kaukotiedustelulentue 2" "Ilmakuvauslentue"
+		}
+	}
+
+	# -------------------------------------------------------------
+	# Heavy Airframes & Logistics (Large)
+	# -------------------------------------------------------------
+
+	# Strategic Bombers
+	large_plane_airframe = {
+		prefix = ""
+		generic = { "Kaukopommituslentolaivue" "Raskas Pommituslentolaivue" }
+		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		unique = {
+			"Kaukopommituslentolaivue 1" "Kaukopommituslentolaivue 2"
+			"Kaukopommituslentolaivue 3" "Kaukopommituslentolaivue 4"
+			"Raskas Pommituslentolaivue 51" "Raskas Pommituslentolaivue 52"
+		}
+	}
+
+	# Maritime Patrol Aircraft
+	large_plane_maritime_patrol_plane_airframe = {
+		prefix = ""
+		generic = { "Merivalvontalentolaivue" "Kaukopartiolentolaivue" }
+		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		unique = {
+			"Merivalvontalentolaivue 1" "Merivalvontalentolaivue 2"
+			"Kaukopartiolentolaivue 1" "Kaukopartiolentolaivue 2"
+			"Sukellusveneentorjuntalaivue 1" "Sukellusveneentorjuntalaivue 2"
+		}
+	}
+
+	# Airborne Transport Planes
+	transport_plane_equipment = {
+		prefix = ""
+		generic = { "Kuljetuslentolaivue" "Ilmakuljetuslaivue" }
+		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		unique = {
+			"1. Kuljetuslentolaivue" "2. Kuljetuslentolaivue" "Erillinen Lentoryhmä"
+			"Ilmakuljetusosasto" "Laskuvarjopudotuslaivue 1" "Huoltolentolaivue 1" "Sairaslentue"
+		}
+	}
+
+	# -------------------------------------------------------------
+	# Advanced / Rocket & Jet Era
+	# -------------------------------------------------------------
+
+	# Rocket Interceptors
+	rocket_interceptor_equipment = {
+		prefix = ""
+		generic = { "Rakettihävittäjälaivue" }
+		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		unique = {
+			"Rakettihävittäjälaivue 1" "Rakettihävittäjälaivue 2" "Kokeellinen Rakettilentue"
+		}
+	}
+
+	# Jet Fighters
+	jet_fighter_equipment = {
+		prefix = ""
+		generic = { "Suihkuhävittäjälaivue" }
+		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		unique = {
+			"Suihkuhävittäjälaivue 11" "Suihkuhävittäjälaivue 21" "Suihkuhävittäjälaivue 31"
+			"Suihkuhävittäjälaivue 13" "Suihkuhävittäjälaivue 23" "Suihkuhävittäjälaivue 33"
+			"Koelentolaivue"
+		}
+	}
+
+	# Jet Tactical Bombers
+	jet_tac_bomber_equipment = {
+		prefix = ""
+		generic = { "Suihkupommituslaivue" }
+		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		unique = {
+			"Suihkupommituslaivue 1" "Suihkupommituslaivue 2"
+			"Suihkupommituslaivue 3" "Suihkupommituslaivue 4"
+		}
+	}
+
+	# Jet Strategic Bombers
+	jet_strat_bomber_equipment = {
+		prefix = ""
+		generic = { "Raskas Suihkupommituslaivue" }
+		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		unique = {
+			"Raskas Suihkupommituslaivue 1" "Raskas Suihkupommituslaivue 2"
+		}
+	}
+}

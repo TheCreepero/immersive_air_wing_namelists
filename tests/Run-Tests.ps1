@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [ValidateSet('All', 'BuildScript', 'Descriptor')]
+    [ValidateSet('All', 'BuildScript', 'Descriptor', 'AirWingNames')]
     [string]$Suite = 'All',
 
     [switch]$CI,
@@ -36,6 +36,9 @@ if ($Suite -eq 'All' -or $Suite -eq 'BuildScript') {
 }
 if ($Suite -eq 'All' -or $Suite -eq 'Descriptor') {
     $testFiles.Add((Join-Path $testDir "Descriptor.Tests.ps1"))
+}
+if ($Suite -eq 'All' -or $Suite -eq 'AirWingNames') {
+    $testFiles.Add((Join-Path $testDir "AirWingNames.Tests.ps1"))
 }
 
 Write-Host "`n=======================================================" -ForegroundColor Cyan
