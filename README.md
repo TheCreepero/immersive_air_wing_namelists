@@ -13,23 +13,20 @@ Immersive Air Wing Names Expanded provides historically authentic air wing, squa
 
 ## Directory Architecture
 
-This repository adheres to the standard two-level Hearts of Iron IV mod architecture:
-- **Outer Root**: Contains workspace build tools, dev assets, and launch configurations.
-- **Inner Mod Root** (immersive_air_wing_namelists/): The actual mod repository containing content files, descriptors, tests, and build engine.
+This repository uses a **single-root** architecture: the workspace root and the Git repository root are the same directory. All mod content, automation, tests, and assets live directly under it.
 
 `
-C:\dev\immersive-air-wing-namelists/
-|-- build.ps1                       # Root build forwarding script
+C:\dev\immersive-air-wing-namelists/   # Workspace root & Git repository root
+|-- descriptor.mod                  # Clausewitz engine descriptor
+|-- thumbnail.png                   # Steam Workshop thumbnail (512x512)
+|-- build.ps1                       # Core build and lifecycle engine
 |-- build.bat                       # Quick packaging shortcut
 |-- build_and_deploy.bat            # Quick deploy shortcut
 |-- assets/                         # Raw graphics and art assets
--- immersive_air_wing_namelists/   # Git repository root & mod content
-    |-- descriptor.mod              # Clausewitz engine descriptor
-    |-- thumbnail.png               # Steam Workshop thumbnail (512x512)
-    |-- build.ps1                   # Core build and lifecycle engine
-    |-- common/                     # Game content and scripts
-    |-- tests/                      # Automated Pester test suites
-    -- wiki/                       # GitHub documentation wiki
+|-- common/                         # Game content and scripts
+|-- localisation/                   # Localisation keys
+|-- tests/                          # Automated Pester test suites
+-- wiki/                           # GitHub documentation wiki
 `
 
 ---

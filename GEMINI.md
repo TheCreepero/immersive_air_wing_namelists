@@ -1,5 +1,7 @@
 # Immersive Air Wing Namelists (IAWN) Development Rules
 
+> Claude Code uses `CLAUDE.md` as its counterpart to this file. Both files describe the same project rules — when one changes, update the other to match.
+
 ## 1. File Structure & Engine Path
 - All air wing namelist files must reside in `common/units/names/`.
 - Air wing names are scoped by country tag at root:
