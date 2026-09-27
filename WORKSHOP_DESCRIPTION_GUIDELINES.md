@@ -1,69 +1,90 @@
 # Steam Workshop Description Guidelines & Reference
 
-This document provides formatting rules, length limits, and reference templates for maintaining the Steam Workshop listing for **Immersive Air Wing Namelists**.
+This document serves as an instruction and reference guide for maintaining and updating the Steam Workshop description for **Immersive Air Wing Names Expanded**.
 
 ---
 
-## Core Rules & Invariants
+## Core Rules & Constraints
 
-1. **No Emojis**: Strictly avoid emojis anywhere in the description text.
-2. **Character Limits**: Steam Workshop descriptions have a max limit of ~17,000 raw BBCode characters. Keep bullet points concise and direct.
-3. **No Planned Section**: Do not include speculative 'Planned' sections in the public description.
-4. **Valid Steam BBCode**:
-   - Headers: \[h1]Title[/h1]\
-   - Bold: \[b]Text[/b]\
-   - Italics: \[i]Text[/i]\
-   - Links: \[url=https://...]Text[/url]\
-   - Bullets: Standard hyphen (\- Item\)
+1. **No Emojis**: Strictly avoid adding any emojis or emoticons to the description.
+2. **Character & Length Limits**:
+   - Steam Workshop descriptions have a strict character limit (~17,000 characters raw BBCode).
+   - Keep bullet points concise and avoid lengthy narrative blocks.
+   - Monitor the overall character count of the BBCode text when adding new nations.
+3. **Writing Style & Tone**:
+   - Keep the tone concise, informative, direct, and enthusiastic, matching the author's original voice.
+   - Use straightforward bullet points and structured section headings.
+   - Do not over-embellish or use marketing buzzwords.
+4. **Preserve Custom Author Sections**:
+   - Keep the header pitch, companion mod links, and Info section consistent with the rest of the Immersive Expanded series.
+   - When updating the workshop description for newly implemented nations, update the `[h1]Included nations:[/h1]` block and the Repository Cross-Reference table.
+5. **No Speculative Planned Section**:
+   - Do not include speculative 'Planned' sections in the public description.
+6. **Language & Grammar**:
+   - Fix typos, misspellings, formatting anomalies, or broken English.
+   - Use proper diacritics and accents for historical air wing designations.
+7. **Steam Formatting (BBCode)**:
+   - Always format the description using Steam's supported BBCode tags:
+     - Section headings: `[h1]Heading Text[/h1]`
+     - Bold text: `[b]...[/b]`
+     - Italics: `[i]...[/i]`
+     - URLs: `[url=https://...]link text[/url]`
+     - Lists: Standard hyphen bullets (`- Item`).
+   - Ensure clean line breaks between sections and blocks.
 
 ---
 
-## Template Description
+## Structure of the Description
 
-\\\bcode
-[h1]Immersive Air Wing Namelists[/h1]
-Immersive Air Wing Namelists for Hearts of Iron IV.
+1. **Header Pitch & Companion Mods**:
+   - Concise authentic intro noting historical air wing coverage, and links to companion mods (*Immersive Namelists Expanded* and *Immersive Ship Names Expanded*).
+2. **[h1]Info:[/h1]**:
+   - Save game compatibility.
+   - Road to 56 (RT56) and vanilla compatibility.
+   - By Blood Alone (BBA) air designer and non-DLC compatibility.
+   - Permissions note.
+3. **[h1]Included nations:[/h1]**:
+   - Grouped by nation in bold (`[b]Nation[/b]`).
+   - Concise summary of archetype coverage (fighters, CAS, naval bombers, heavy fighters, tactical/strategic bombers, reconnaissance, transports, carrier aviation).
+4. **Call to Action**:
+   - Prompt to rate, favorite, and share suggestions in discussions.
 
-[h1]Features:[/h1]
-- Immersive and historically authentic additions.
-- Fully compatible with current Hearts of Iron IV version (1.19.*).
-- Multiplayer and Ironman compatible.
+---
 
-[h1]Compatibility:[/h1]
-- Compatible with all major overhaul and total conversion mods.
-- Safe to enable or disable mid-campaign.
+## Repository Cross-Reference (`common/units/names/`)
 
-[h1]Feedback & Contributions:[/h1]
-Please report issues, suggestions, or feedback in the Steam Workshop discussion threads.
-\\\
-"@
+| File | Nation | Tag | Status in Description |
+| :--- | :--- | :--- | :--- |
+| `iawn_FIN_names.txt` | Finland | `FIN` | Included (Fighters, CAS, NAV, Heavy Fighters, Tactical/Strategic Bombers, Transports, Carrier Wings) |
 
- = @"
-# Immersive Air Wing Namelists - Development & Agent Rules
+---
 
-## 1. Mod Architecture & Workspace Layout
-- This project follows a two-level mod directory layout:
-  - **Outer workspace root**: \$ParentDirectory\
-  - **Inner mod repository**: \$innerDirectory\ (Git repository root containing \.git/\)
-- **Dual-Path Synchronization Invariant**:
-  - \GEMINI.md\ exists in duplicate (at the workspace root and inside the inner mod repository).
-  - Whenever updating rules, instructions, or documentation, keep both \GEMINI.md\ copies 100% identical.
+## Active Steam Workshop Description (BBCode Format)
 
-## 2. Clausewitz File Format & Syntax Invariants
-- **UTF-8 Without BOM**: All Clausewitz script files (\.mod\, \.txt\) must be saved in UTF-8 without BOM. Never use standard Windows PowerShell \Set-Content -Encoding UTF8\ because it writes a BOM (\\ufeff\). Always write text files using:
-  \[System.IO.File]::WriteAllText($path, $content, [System.Text.UTF8Encoding]::new($false))\
-- **Key-Value Syntax**: \descriptor.mod\ must strictly follow \key="value"\ without spaces around the \=\ operator.
-- **Bracket Balance**: Curly braces \{}\ and double quotes \""\ must always be strictly balanced.
-- **No Empty Blocks**: Avoid empty blocks such as \unique = { }\ or \ordered = { }\.
+```bbcode
+More namelists! Historically authentic air wing, squadron, and group namelists for Hearts of Iron IV.
 
-## 3. Build & Automation Protocol
-- Always run pre-flight syntax and descriptor checks before declaring work complete:
-  \powershell -File .\build.ps1 -ValidateOnly\
-- Run the full automated Pester test suite:
-  \powershell -File .\build.ps1 -Test\
-- Use \.\build.ps1 -DevLink\ for zero-copy live editing directly from the repository.
-- Use \.\build.ps1 -Package\ to verify that release packaging strictly excludes \.git\, \.github\, \.vscode\, \	ests\, \wiki\, and developer scripts.
+Check out my other mods:
+- [url=https://steamcommunity.com/workshop/filedetails/?id=2967389401]Immersive Namelists Expanded[/url]
+- [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3807415216]Immersive Ship Names Expanded[/url]
 
-## 4. Git & Commit Guidelines
-- Do not commit to the Git repository unless explicitly instructed by the user. The user prefers to review changes before committing.
-- **Git Verification Invariant**: After completing changes, always verify \git status\ in the inner mod folder to ensure the working tree reflects expected changes.
+If you have any ideas for air wing namelists, please leave them in the discussion thread!
+
+[h1]Info:[/h1]
+- [b]Save Game Compatible:[/b] Can be added or removed from ongoing games without issues.
+- [b]Compatible with Road to 56 (RT56) and vanilla.[/b]
+- Fully compatible with the By Blood Alone (BBA) air designer as well as non-DLC air systems.
+- No hard incompatibilities. Namelists from other mods might override namelists from this mod in some cases.
+- Feel free to use this mod however you wish.
+
+[h1]Included nations:[/h1]
+[b]Finland[/b]
+- Land Fighters & Interceptors: Historic fighter squadrons (e.g. [i]Hävittäjälentolaivue 24[/i], [i]26[/i], [i]28[/i], [i]30[/i], [i]32[/i], [i]34[/i]) and wartime reserve/training units.
+- Close Air Support (CAS): Dedicated dive bomber and ground support squadrons ([i]Rynnäkkölentolaivue[/i], [i]Syöksypommituslaivue[/i], [i]Maataistelulentolaivue[/i]).
+- Naval Bombers: Maritime torpedo and patrol units ([i]Merilentolaivue[/i], [i]Torpedolentolaivue[/i], [i]Lentolaivue 6[/i]).
+- Medium & Heavy Aircraft: Heavy fighters ([i]Raskas Hävittäjälaivue[/i]), tactical bomber squadrons ([i]Pommituslentolaivue[/i]), and scout wings ([i]Tiedustelulentolaivue[/i]).
+- Strategic & Transport Aviation: Heavy long-range bombers ([i]Raskas Pommituslentolaivue[/i]), maritime patrol ([i]Merivalvontalaivue[/i]), and air transport ([i]Kuljetuslentolaivue[/i]).
+- Carrier Aviation: Full carrier-capable fighter, dive bomber, and torpedo squadrons.
+
+If you enjoy the mod, please give it a thumbs up and favorite!
+```

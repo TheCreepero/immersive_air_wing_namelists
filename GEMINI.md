@@ -77,17 +77,14 @@ Always validate changes before completing tasks:
    - `.\build.ps1 -Deploy` — Copy mod files to the Paradox user mod folder.
    - `.\build.ps1 -DevLink` — Create zero-copy NTFS junction for live hot-reloading.
 
-## 6. Repository Architecture & Dual-Path Invariants
-- **Two-Tier Architecture**:
-  - Outer Root (`C:\dev\immersive-air-wing-namelists\`): Workspace build wrappers, asset directory, launcher descriptor.
-  - Inner Mod Root (`immersive_air_wing_namelists\`): Git repository root, mod content (`common/`, `localisation/`), test suite, and core build script.
-- **Mandatory Dual-Path Synchronization**:
-  - `GEMINI.md` exists both at the workspace root and within `immersive_air_wing_namelists/`.
-  - Both files must be kept 100% synchronized and identical.
+## 6. Repository Architecture & Single-Root Guidelines
+- **Single-Root Architecture**:
+  - Unified Workspace Root (`C:\dev\immersive-air-wing-namelists\`): The workspace root is the Git repository root (`.git/`).
+  - All mod content (`descriptor.mod`, `thumbnail.png`, `common/`, `localisation/`), automation (`build.ps1`), test suites (`tests/`), assets (`assets/`), and metadata reside in this unified repository structure.
 - **Git Working Tree Invariant**:
   - After modifying rules, skills, or game content, verify that changes appear in the Git working tree:
     ```powershell
-    git -C immersive_air_wing_namelists status
+    git status
     ```
 
 ## 7. Branding & Thumbnail Standards
@@ -98,18 +95,18 @@ Always validate changes before completing tasks:
 - **Asset Directory Invariants**:
   - `assets/thumbnail_raw.png`: Original, uncompressed high-resolution artwork (1920×1440).
   - `assets/thumbnail_master.png`: Cropped 512×512 branded master.
-  - `immersive_air_wing_namelists/thumbnail.png`: Active in-game/Steam Workshop distribution asset (< 1 MB).
+  - `thumbnail.png`: Active in-game/Steam Workshop distribution asset (< 1 MB).
 - **Canonical Generation Command**:
   ```powershell
   python "W:\Antigravity\Mod Thumbnail Generator\generate_branding.py" `
-    --descriptor "immersive_air_wing_namelists\descriptor.mod" `
+    --descriptor "descriptor.mod" `
     --title "IMMERSIVE`nAIR WING`nNAMELISTS" `
     --bg-image "assets\thumbnail_raw.png" `
     --theme paradox_red `
     --accent-match "AIR WING" `
     --text-pos top `
     --hoi4 `
-    --out-dirs "immersive_air_wing_namelists,assets" `
+    --out-dirs ".,assets" `
     --preview-filename "thumbnail.png"
   ```
 

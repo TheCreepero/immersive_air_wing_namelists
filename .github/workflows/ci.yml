@@ -34,7 +34,7 @@ jobs:
       - name: Verify Clean Package Staging Exclusions
         shell: pwsh
         run: |
-          $zipPath = "..\immersive_air_wing_namelists.zip"
+          $zipPath = "artifacts/immersive_air_wing_namelists.zip"
           if (-not (Test-Path $zipPath)) {
             $zipPath = "immersive_air_wing_namelists.zip"
           }
