@@ -1,5 +1,5 @@
 FIN = {
-	air_wing_names_template = AIR_WING_NAME_FIN_FALLBACK
+	air_wing_names_template = IAWN_FIN_FALLBACK
 
 	# Air wings can only be named through archetype
 
@@ -11,7 +11,7 @@ FIN = {
 	small_plane_airframe = {
 		prefix = ""
 		generic = { "Hävittäjälentolaivue" }
-		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		generic_pattern = IAWN_FIN_GENERIC
 		unique = {
 			"Hävittäjälentolaivue 24" "Hävittäjälentolaivue 26" "Hävittäjälentolaivue 28"
 			"Hävittäjälentolaivue 30" "Hävittäjälentolaivue 32" "Hävittäjälentolaivue 34"
@@ -25,7 +25,7 @@ FIN = {
 	small_plane_cas_airframe = {
 		prefix = ""
 		generic = { "Rynnäkkölentolaivue" "Maataistelulentolaivue" }
-		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		generic_pattern = IAWN_FIN_GENERIC
 		unique = {
 			"Rynnäkkölentolaivue 1" "Rynnäkkölentolaivue 2" "Rynnäkkölentolaivue 3" "Rynnäkkölentolaivue 4"
 			"Syöksypommituslaivue 1" "Syöksypommituslaivue 2"
@@ -37,7 +37,7 @@ FIN = {
 	small_plane_naval_bomber_airframe = {
 		prefix = ""
 		generic = { "Merilentolaivue" "Torpedolentolaivue" }
-		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		generic_pattern = IAWN_FIN_GENERIC
 		unique = {
 			"Lentolaivue 6" "Meritoimintalaivue 6" "Erillinen Merilentolaivue" "5. Erillinen Lentolaivue"
 			"Rannikkotorpedolaivue 1" "Rannikkotorpedolaivue 2" "Laatokan Lentoryhmä"
@@ -49,7 +49,7 @@ FIN = {
 	small_plane_suicide_airframe = {
 		prefix = ""
 		generic = { "Erikoishyökkäyslaivue" }
-		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		generic_pattern = IAWN_FIN_GENERIC
 		unique = {
 			"Erillinen Uhrihyökkäysosasto" "Erikoishyökkäyslaivue 1" "Erikoishyökkäyslaivue 2"
 		}
@@ -59,7 +59,7 @@ FIN = {
 	cv_small_plane_airframe = {
 		prefix = ""
 		generic = { "Tukialushävittäjälaivue" }
-		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		generic_pattern = IAWN_FIN_GENERIC
 		unique = {
 			"Tukialushävittäjälaivue 1" "Tukialushävittäjälaivue 2" "Tukialushävittäjälaivue 3" "Tukialushävittäjälaivue 4"
 		}
@@ -69,7 +69,7 @@ FIN = {
 	cv_small_plane_cas_airframe = {
 		prefix = ""
 		generic = { "Tukialusrynnäkkölaivue" }
-		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		generic_pattern = IAWN_FIN_GENERIC
 		unique = {
 			"Tukialusrynnäkkölaivue 1" "Tukialusrynnäkkölaivue 2" "Tukialusrynnäkkölaivue 3"
 		}
@@ -79,7 +79,7 @@ FIN = {
 	cv_small_plane_naval_bomber_airframe = {
 		prefix = ""
 		generic = { "Tukialustorpedolaivue" }
-		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		generic_pattern = IAWN_FIN_GENERIC
 		unique = {
 			"Tukialustorpedolaivue 1" "Tukialustorpedolaivue 2" "Tukialustorpedolaivue 3"
 		}
@@ -89,7 +89,7 @@ FIN = {
 	cv_small_plane_suicide_airframe = {
 		prefix = ""
 		generic = { "Tukialuserikoishyökkäyslaivue" }
-		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		generic_pattern = IAWN_FIN_GENERIC
 		unique = {
 			"Tukialuserikoishyökkäysosasto 1" "Tukialuserikoishyökkäysosasto 2"
 		}
@@ -103,7 +103,7 @@ FIN = {
 	medium_plane_fighter_airframe = {
 		prefix = ""
 		generic = { "Raskas Hävittäjälentolaivue" "Yöhävittäjälaivue" }
-		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		generic_pattern = IAWN_FIN_GENERIC
 		unique = {
 			"Raskas Hävittäjälaivue 1" "Raskas Hävittäjälaivue 2"
 			"Yöhävittäjälaivue 1" "Yöhävittäjälaivue 2"
@@ -115,7 +115,7 @@ FIN = {
 	medium_plane_airframe = {
 		prefix = ""
 		generic = { "Pommituslentolaivue" }
-		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		generic_pattern = IAWN_FIN_GENERIC
 		unique = {
 			"Pommituslentolaivue 42" "Pommituslentolaivue 44" "Pommituslentolaivue 46" "Pommituslentolaivue 48"
 			"Pommituslentolaivue 40" "Pommituslentolaivue 41" "Pommituslentolaivue 43" "Pommituslentolaivue 45"
@@ -127,7 +127,7 @@ FIN = {
 	medium_plane_scout_plane_airframe = {
 		prefix = ""
 		generic = { "Tiedustelulentolaivue" "Kaukotiedustelulaivue" }
-		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		generic_pattern = IAWN_FIN_GENERIC
 		unique = {
 			"Tiedustelulentolaivue 10" "Tiedustelulentolaivue 12" "Tiedustelulentolaivue 14"
 			"Tiedustelulentolaivue 16" "Tiedustelulentolaivue 17" "Tiedustelulentolaivue 29"
@@ -143,7 +143,7 @@ FIN = {
 	large_plane_airframe = {
 		prefix = ""
 		generic = { "Kaukopommituslentolaivue" "Raskas Pommituslentolaivue" }
-		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		generic_pattern = IAWN_FIN_GENERIC
 		unique = {
 			"Kaukopommituslentolaivue 1" "Kaukopommituslentolaivue 2"
 			"Kaukopommituslentolaivue 3" "Kaukopommituslentolaivue 4"
@@ -155,7 +155,7 @@ FIN = {
 	large_plane_maritime_patrol_plane_airframe = {
 		prefix = ""
 		generic = { "Merivalvontalentolaivue" "Kaukopartiolentolaivue" }
-		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		generic_pattern = IAWN_FIN_GENERIC
 		unique = {
 			"Merivalvontalentolaivue 1" "Merivalvontalentolaivue 2"
 			"Kaukopartiolentolaivue 1" "Kaukopartiolentolaivue 2"
@@ -167,7 +167,7 @@ FIN = {
 	transport_plane_equipment = {
 		prefix = ""
 		generic = { "Kuljetuslentolaivue" "Ilmakuljetuslaivue" }
-		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		generic_pattern = IAWN_FIN_GENERIC
 		unique = {
 			"1. Kuljetuslentolaivue" "2. Kuljetuslentolaivue" "Erillinen Lentoryhmä"
 			"Ilmakuljetusosasto" "Laskuvarjopudotuslaivue 1" "Huoltolentolaivue 1" "Sairaslentue"
@@ -182,7 +182,7 @@ FIN = {
 	rocket_interceptor_equipment = {
 		prefix = ""
 		generic = { "Rakettihävittäjälaivue" }
-		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		generic_pattern = IAWN_FIN_GENERIC
 		unique = {
 			"Rakettihävittäjälaivue 1" "Rakettihävittäjälaivue 2" "Kokeellinen Rakettilentue"
 		}
@@ -192,7 +192,7 @@ FIN = {
 	jet_fighter_equipment = {
 		prefix = ""
 		generic = { "Suihkuhävittäjälaivue" }
-		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		generic_pattern = IAWN_FIN_GENERIC
 		unique = {
 			"Suihkuhävittäjälaivue 11" "Suihkuhävittäjälaivue 21" "Suihkuhävittäjälaivue 31"
 			"Suihkuhävittäjälaivue 13" "Suihkuhävittäjälaivue 23" "Suihkuhävittäjälaivue 33"
@@ -204,7 +204,7 @@ FIN = {
 	jet_tac_bomber_equipment = {
 		prefix = ""
 		generic = { "Suihkupommituslaivue" }
-		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		generic_pattern = IAWN_FIN_GENERIC
 		unique = {
 			"Suihkupommituslaivue 1" "Suihkupommituslaivue 2"
 			"Suihkupommituslaivue 3" "Suihkupommituslaivue 4"
@@ -215,7 +215,7 @@ FIN = {
 	jet_strat_bomber_equipment = {
 		prefix = ""
 		generic = { "Raskas Suihkupommituslaivue" }
-		generic_pattern = AIR_WING_NAME_FIN_GENERIC
+		generic_pattern = IAWN_FIN_GENERIC
 		unique = {
 			"Raskas Suihkupommituslaivue 1" "Raskas Suihkupommituslaivue 2"
 		}

@@ -48,34 +48,53 @@ In Hearts of Iron IV, air wings can only be named through archetype (`#Air wings
 - `rocket_interceptor_equipment` — Rocket Interceptors
 - `jet_fighter_equipment` — Jet Fighters
 - `jet_tac_bomber_equipment` — Jet Tactical Bombers
-- `jet_strat_bomber_equipment` — Jet Strategic Bombers (also aliased as `jet_strategic_bomber_equipment`)
+- `jet_strat_bomber_equipment` — Jet Strategic Bombers
+
+`jet_strategic_bomber_equipment` is **not** a valid archetype (it is a typo in vanilla's SOV file, not an alias). Never use it as a key; the only valid spelling is `jet_strat_bomber_equipment`.
 
 ## 3. Historical & Linguistic Standards
 - **Historical Plausibility over Rigid Accuracy**: As with naval namelists, prioritize immersion and gameplay scalability. While historical lists anchor unique squadrons (e.g., Finnish Lentolaivue, British RAF Squadrons, German Geschwader), plausible generic templates (`generic = { ... }` with authentic sequential patterns) ensure players who produce large wartime air forces never fall back to generic "1st Fighter Wing" labels.
 - **Linguistic Authenticity**: Preserve native orthography, special characters, and diacritics (e.g., `ä`, `ö`, `é`, `ø`, `ß`).
 - **Prefix Consistency**: When `prefix = "..."` is used, always include a trailing space if it should be separated from the formation title.
+- **Unit Scale**: New nations name formations at the level closest to a 100-aircraft wing: Geschwader (Germany), aviation division (USSR), Stormo (Italy), Flygflottilj (Sweden), RAF Wing/Group (Britain), Hikōdan/Kōkūtai (Japan). Finland's squadron-level list (Lentolaivue) is a documented exception: Finland had only five flying regiments (Lentorykmentti), too few to fill the pools.
+- **Orthography**:
+  - Soviet names use Latin transliteration, with ordinals carrying the `-ya` (feminine) or `-y` (masculine) ending of the unit noun.
+  - Japanese names use Hepburn romaji with macrons (e.g., `Kōkūtai`, `Hikōdan`) and `Dai-N` numbering.
+  - Honorific and nickname designations go in single quotes inside the name; double quotes would terminate the pdx string.
+- **No Padding**: Never invent units to pad a pool. If a nation has few historical formations for an archetype, keep `unique` short (or empty) and let `generic` carry the rest.
 
 ## 4. Localisation & Encoding Rules
-- Any custom `generic_pattern` or `air_wing_names_template` keys must be defined in `localisation/english/` (e.g., `iawn_names_l_english.yml`).
+- **One Pair of Files per Nation**: `common/units/names/iawn_<TAG>_names.txt` plus `localisation/english/iawn_<TAG>_l_english.yml`. The tag in the filename must equal the single root tag block in the namelist.
+- **Key Namespace**: Every key this mod defines starts with `IAWN_<TAG>_`: `IAWN_<TAG>_FALLBACK` for `air_wing_names_template` and `IAWN_<TAG>_<PATTERN>` for each `generic_pattern` (e.g., `IAWN_FIN_FALLBACK`, `IAWN_FIN_GENERIC`). Never use `AIR_WING_NAME_<TAG>_*`: vanilla owns that namespace (including `AIR_WING_NAME_FIN_FALLBACK`), so reusing it would clash with vanilla keys.
+  ```yaml
+  l_english:
+   IAWN_<TAG>_FALLBACK: "$NUMBER$. <Formation>"
+   IAWN_<TAG>_GENERIC: "$NAME$ $NR$"
+  ```
+- **Token Rule** (only these tokens exist; there is no ordinal token):
+  - `air_wing_names_template` strings use `$NUMBER$` (sequential formation number) and optionally `$TYPE$` (equipment archetype display name).
+  - `generic_pattern` strings use `$NR$` (sequential formation number) and `$NAME$` (string selected from the `generic = { ... }` pool).
+- **All Languages**: The game does not fall back to English for a missing key, so every vanilla language folder needs the keys (`braz_por`, `french`, `german`, `japanese`, `korean`, `polish`, `russian`, `simp_chinese`, `spanish`). Author only the English file, then run `.\build.ps1 -SyncLoc` to generate `localisation/<lang>/iawn_<TAG>_l_<lang>.yml` (English text, header changed to `l_<lang>:`) for the other nine languages and to remove stale ones. Commit the generated files; never edit them by hand.
+- **PowerShell Quoting**: A PowerShell double-quoted string or expanding here-string treats `$NR$`, `$NAME$`, etc. as variables and silently deletes them, leaving broken values such as `"$ $"`. Never put a `$TOKEN$` in one, in scripts, tests or one-off commands. Use single quotes, or read and write file bytes.
 - **Paradox Encoding Invariants**:
   - Script files (`common/**/*.txt`): **UTF-8 without BOM**.
-  - Localisation files (`localisation/**/*.yml`): **UTF-8 with BOM** (standard Clausewitz engine requirement).
-- Localization format tokens:
-  - `$NR$` / `$NUMBER$` — Sequential formation number.
-  - `$NAME$` — String selected from the `generic = { ... }` pool.
-  - `$TYPE$` — Equipment archetype display name.
+  - Localisation files (`localisation/**/*.yml`): **UTF-8 with BOM** (standard Clausewitz engine requirement), first line `l_<language>:`.
 
 ## 5. Build, Validation & Testing Protocol
 Always validate changes before completing tasks:
-1. **Syntax & Bracket Validation**:
+1. **Localisation Sync** (after any change to `localisation/english/`):
+   ```powershell
+   powershell -File .\build.ps1 -SyncLoc
+   ```
+2. **Syntax & Bracket Validation**:
    ```powershell
    powershell -File .\build.ps1 -ValidateOnly
    ```
-2. **Automated Pester Tests**:
+3. **Automated Pester Tests**:
    ```powershell
    powershell -File .\build.ps1 -Test
    ```
-3. **Deployment / DevLink for In-Game Testing**:
+4. **Deployment / DevLink for In-Game Testing**:
    - `.\build.ps1 -Deploy` — Copy mod files to the Paradox user mod folder.
    - `.\build.ps1 -DevLink` — Create zero-copy NTFS junction for live hot-reloading.
 

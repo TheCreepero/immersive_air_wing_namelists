@@ -56,6 +56,9 @@ All lifecycle tasks are managed through uild.ps1:
 
 # 7. Clean deployed mod files and temporary archives
 .\build.ps1 -Clean
+
+# 8. Generate the other nine game languages from localisation/english/ (commit the result)
+.\build.ps1 -SyncLoc
 `
 
 ---
