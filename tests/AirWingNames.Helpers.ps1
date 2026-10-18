@@ -28,7 +28,7 @@ $script:OtherLanguages = @(
     'spanish'
 )
 
-# Every air wing archetype a national list must define (see CLAUDE.md section 2).
+# Every air wing archetype a national list must define (see docs/iawn-agent-guide.md section 2).
 $script:ExpectedArchetypes = @(
     'small_plane_airframe',
     'small_plane_cas_airframe',

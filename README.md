@@ -16,7 +16,7 @@ Immersive Air Wing Names Expanded provides historically authentic air wing, squa
 This repository uses a **single-root** architecture: the workspace root and the Git repository root are the same directory. All mod content, automation, tests, and assets live directly under it.
 
 `
-C:\dev\immersive-air-wing-namelists/   # Workspace root & Git repository root
+immersive-air-wing-namelists/          # Repository root (mods\immersive-air-wing-namelists under the Modding Manager)
 |-- descriptor.mod                  # Clausewitz engine descriptor
 |-- thumbnail.png                   # Steam Workshop thumbnail (512x512)
 |-- build.ps1                       # Core build and lifecycle engine
@@ -39,7 +39,7 @@ All lifecycle tasks are managed through uild.ps1:
 # 1. Deploy mod to local Paradox Interactive Hearts of Iron IV mod folder
 .\build.ps1 -Deploy
 
-# 2. Configure zero-copy DevLink (instant hot-reload for live testing)
+# 2. Configure zero-copy DevLink (the launcher loads this folder itself; restart the game to see a change)
 .\build.ps1 -DevLink
 
 # 3. Validate syntax and bracket balance without deploying

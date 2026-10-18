@@ -1,17 +1,9 @@
 BeforeAll {
-    $script:RepoRoot = Resolve-Path (Join-Path $PSScriptRoot "..")
+    $script:RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
     $script:BuildScriptPath = Join-Path $script:RepoRoot "build.ps1"
     $script:BuildContent = [System.IO.File]::ReadAllText($script:BuildScriptPath, [System.Text.Encoding]::UTF8)
-
-    $metaFuncMatch = [regex]::Match($script:BuildContent, '(?s)(function Get-ModMetadata\s*\{.*?\n\})')
-    $launcherFuncMatch = [regex]::Match($script:BuildContent, '(?s)(function New-LauncherModContent\s*\{.*?\n\})')
-
-    if ($metaFuncMatch.Success) {
-        . ([ScriptBlock]::Create($metaFuncMatch.Groups[1].Value))
-    }
-    if ($launcherFuncMatch.Success) {
-        . ([ScriptBlock]::Create($launcherFuncMatch.Groups[1].Value))
-    }
+    . (Join-Path $script:RepoRoot 'tools\HoiModBuild.ps1')
+    $script:BuildConfig = Get-ModBuildConfig -RepoDir $script:RepoRoot
 
     # Sync-Localisation reports through build.ps1's Write-* helpers; stub them for the unit tests.
     function Write-Ok   { param([string]$msg) }
@@ -24,79 +16,16 @@ BeforeAll {
     . (Join-Path $PSScriptRoot 'AirWingNames.Helpers.ps1')
 }
 
-Describe "build.ps1 Helper: Get-ModMetadata" {
-    It "Parses mod metadata correctly from descriptor file" {
-        $tempFile = [System.IO.Path]::GetTempFileName()
-        try {
-            $sampleLines = @(
-                'version="1.0.0"',
-                'tags={',
-                "`t`"Historical`"",
-                "`t`"Military`"",
-                '}',
-                'name="Immersive Air Wing Namelists"',
-                'supported_version="1.19.*"',
-                'remote_file_id="1234567890"'
-            )
-            $sampleDescriptor = $sampleLines -join "`r`n"
-            [System.IO.File]::WriteAllText($tempFile, $sampleDescriptor, [System.Text.Encoding]::UTF8)
-
-            $meta = Get-ModMetadata -Path $tempFile
-            $meta.Version | Should -Be "1.0.0"
-            $meta.Name | Should -Be "Immersive Air Wing Namelists"
-            $meta.SupportedVersion | Should -Be "1.19.*"
-            $meta.RemoteFileId | Should -Be "1234567890"
-        }
-        finally {
-            if (Test-Path $tempFile) { Remove-Item -Force $tempFile }
-        }
-    }
-}
-
-Describe "build.ps1 Helper: New-LauncherModContent" {
-    It "Normalizes backslashes to forward slashes in target mod path" {
-        $tempFile = [System.IO.Path]::GetTempFileName()
-        try {
-            $sampleLines = @(
-                'version="1.0"',
-                'name="Immersive Air Wing Namelists"',
-                'supported_version="1.19.*"'
-            )
-            $sampleDescriptor = $sampleLines -join "`r`n"
-            [System.IO.File]::WriteAllText($tempFile, $sampleDescriptor, [System.Text.Encoding]::UTF8)
-
-            $result = New-LauncherModContent -DescriptorPath $tempFile -TargetModPath "C:\Games\Hearts of Iron IV\mod\immersive_air_wing_namelists"
-            $result | Should -Match 'path="C:/Games/Hearts of Iron IV/mod/immersive_air_wing_namelists"'
-            $result | Should -Not -Match '\\\\'
-        }
-        finally {
-            if (Test-Path $tempFile) { Remove-Item -Force $tempFile }
-        }
-    }
-}
-
-Describe "build.ps1 Packaging & Staging Exclusions" {
-    It "Build script must exclude tests directory from packages and deployment" {
-        $script:BuildContent | Should -Match "excludeDirs\s*=\s*@\([^)]*['`"]tests['`"]"
+Describe 'build.ps1 configuration' {
+    It 'ships the common and localisation folders with the descriptor and thumbnail' {
+        $shippedTopLevel = @(Get-ModContentFiles -Config $script:BuildConfig | ForEach-Object { ($_ -split '/')[0] } | Sort-Object -Unique)
+        $shippedTopLevel | Should -Be @('common', 'descriptor.mod', 'localisation', 'thumbnail.png') -Because 'the namelists name their wings through localisation keys'
     }
 
-    It "Build script must exclude wiki directory from packages and deployment" {
-        $script:BuildContent | Should -Match "excludeDirs\s*=\s*@\([^)]*['`"]wiki['`"]"
-    }
-
-    It "Build script must exclude .git and dev tools from packaging" {
-        $script:BuildContent | Should -Match "excludeDirs\s*=\s*@\([^)]*['`"]\.git['`"]"
-        $script:BuildContent | Should -Match "excludeDirs\s*=\s*@\([^)]*['`"]\.github['`"]"
-    }
-}
-
-Describe "build.ps1 Packaging Includes Localisation" {
-    It "Build script must not exclude the localisation directory from packages and deployment" {
-        $script:BuildContent | Should -Not -Match "excludeDirs\s*=\s*@\([^)]*['`"]localisation['`"]"
-    }
-
-    It "Build script must not exclude yml files from packages and deployment" {
-        $script:BuildContent | Should -Not -Match "excludeFiles\s*=\s*@\([^)]*yml"
+    It 'installs as immersive_air_wing_namelists and packages immersive_air_wing_namelists.zip' {
+        $script:BuildConfig.ModFolderName | Should -Be 'immersive_air_wing_namelists'
+        $script:BuildConfig.ZipArchiveName | Should -Be 'immersive_air_wing_namelists.zip'
+        $script:BuildConfig.PackageLayout | Should -Be 'Flat'
     }
 }
 
@@ -211,6 +140,8 @@ Describe "build.ps1 Switch: -SyncLoc" {
         $repo = Join-Path $TestDrive 'repo'
         New-Item -ItemType Directory -Path $repo -Force | Out-Null
         Copy-Item -Path $script:BuildScriptPath -Destination (Join-Path $repo 'build.ps1')
+        New-Item -ItemType Directory -Path (Join-Path $repo 'tools') -Force | Out-Null
+        Copy-Item -Path (Join-Path $script:RepoRoot 'tools\HoiModBuild.ps1') -Destination (Join-Path $repo 'tools\HoiModBuild.ps1')
         Write-LocFile -Path (Join-Path $repo 'localisation\english\iawn_XYZ_l_english.yml') -Text ('l_english:' + "`n" + $script:Body)
 
         $psExe = (Get-Process -Id $PID).Path
