@@ -1,6 +1,6 @@
 # Immersive Air Wing Namelists (IAWN) - Agent Guide
 
-Moved here from `GEMINI.md` on 2026-10-18, when the rule file was reduced to the rules that always apply; `GEMINI.md` says when to read which section.
+Moved here from `GEMINI.md` on 2026-10-18, when the rule file was reduced to the rules that always apply; `AGENTS.md` says when to read which section.
 
 ## 1. File Structure & Engine Path
 - All air wing namelist files must reside in `common/units/names/` [NAM-014].
