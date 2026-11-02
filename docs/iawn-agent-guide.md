@@ -82,25 +82,7 @@ Always validate changes before completing tasks:
     git status
     ```
 
-## 7. Branding & Thumbnail Standards
-- **Namelist Mod Suite Visual Taxonomy**:
-  - **Ground / Divisions** (*Immersive Namelists Expanded*): `--theme amber` (`#E5A93C`)
-  - **Naval / Ships** (*Immersive Ship Names Expanded*): `--theme cyan` (`#63B3ED`)
-  - **Aviation / Air Wings** (*Immersive Air Wing Namelists*): `--theme paradox_red` (`#DE5646`), accenting `AIR WING`
-- **Asset Directory Invariants**:
-  - `assets/thumbnail_raw.png`: Original, uncompressed high-resolution artwork (1920×1440).
-  - `assets/thumbnail_master.png`: Cropped 512×512 branded master.
-  - `thumbnail.png`: Active in-game/Steam Workshop distribution asset (< 1 MB).
-- **Thumbnail Generation**: use the `mod-thumbnail-generator` skill with the parameters of the command below, or run the generator directly:
-  ```powershell
-  python "W:\Antigravity\Mod Thumbnail Generator\generate_branding.py" `
-    --descriptor "descriptor.mod" `
-    --title "IMMERSIVE`nAIR WING`nNAMELISTS" `
-    --bg-image "assets\thumbnail_raw.png" `
-    --theme paradox_red `
-    --accent-match "AIR WING" `
-    --text-pos top `
-    --hoi4 `
-    --out-dirs ".,assets" `
-    --preview-filename "thumbnail.png"
-  ```
+## 7. Thumbnail
+- `thumbnail.png` is rendered by the Manager's `Scripts/Showcase/New-HoiThumbnail.ps1` (skill `hoi4-workshop-showcase`) in the template every mod of the tree shares. The Immersive Series label and its accent come from the Manager's `Config/thumbnail-families.json`; this mod's background (a loading screen) is in `assets/thumbnail.json`.
+- Preview with `New-HoiThumbnail.ps1 "Immersive Air Wing Names Expanded"`, show the owner, write it with `-Apply` on the owner's word, then `.\build.ps1 -ValidateOnly`.
+- `assets/thumbnail_raw.png` and `assets/thumbnail_master.png` were inputs of the old generator and are no longer used.

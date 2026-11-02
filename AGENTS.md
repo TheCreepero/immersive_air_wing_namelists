@@ -19,7 +19,7 @@ Shared rules for every mod in this tree (file encodings, build commands, engine 
 | Task | Read |
 |---|---|
 | Authoring a nation | `docs/iawn-agent-guide.md` sections 1 to 4 |
-| Thumbnail or branding | guide section 7, with the `mod-thumbnail-generator` skill |
+| Thumbnail | guide section 7, with the Manager's `New-HoiThumbnail.ps1` (skill `hoi4-workshop-showcase`) |
 
 ## Engine Knowledge
 - Engine facts live in the Modding Manager's register, reached through the user-level `hoi4-modding-knowledge` skill: search it before a new kind of file and before asking for a game launch, cite ids here, never write a fact into this repository.
