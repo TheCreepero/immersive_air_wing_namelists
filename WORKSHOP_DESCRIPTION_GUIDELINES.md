@@ -8,7 +8,7 @@ This document serves as an instruction and reference guide for maintaining and u
 
 1. **No Emojis**: Strictly avoid adding any emojis or emoticons to the description.
 2. **Character & Length Limits**:
-   - Steam Workshop descriptions have a strict character limit (~17,000 characters raw BBCode).
+   - Steam caps descriptions at 8,000 characters of raw BBCode (a longer one fails the upload with "Invalid Parameter"); stay under ~7,500.
    - Keep bullet points concise and avoid lengthy narrative blocks.
    - Monitor the overall character count of the BBCode text when adding new nations.
 3. **Writing Style & Tone**:
